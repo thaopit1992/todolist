@@ -42,7 +42,8 @@ class TodosPageState extends State<TodosPage>
 
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return Scaffold(
+        body: Material(
       color: Colors.white,
       child: Column(
         children: <Widget>[
@@ -53,7 +54,29 @@ class TodosPageState extends State<TodosPage>
               color: widget.category.color,
               width: double.infinity,
               height: 85.0,
-              child: Center(),
+              child: Center(
+                child: Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.arrow_back, color: Colors.white),
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                    
+                    Container(
+                      // height: 45,
+                      // width: 200,
+                      // color: Colors.black,
+                      child: Center(
+                        child: Text(
+                          '${widget.category.name}',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    
+                  ],
+                ),
+              ),
             ),
           ),
           TabBar(
@@ -83,6 +106,6 @@ class TodosPageState extends State<TodosPage>
           ),
         ],
       ),
-    );
+    ));
   }
 }

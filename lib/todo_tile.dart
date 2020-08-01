@@ -56,13 +56,46 @@ class TodoTile extends StatelessWidget {
     );
   }
 
+  Widget _showDialog(BuildContext context, DismissDirection direction) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Confirm"),
+          content: Text("Do you really want to delete this task"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            FlatButton(
+              child: Text("Yes"),
+              onPressed: () {
+                Navigator.of(context).pop();
+                if(direction == DismissDirection.endToStart){
+                  deleteTodo(todo);
+                }
+                
+              },
+            ),
+            FlatButton(
+              child: Text("No"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Dismissible(
       key: Key(todo.id),
       onDismissed: (DismissDirection direction) {
         if (direction == DismissDirection.endToStart) {
-          deleteTodo(todo);
+          // debugPrint(direction.toString());
+          _showDialog(context, direction);
+          // deleteTodo(todo);
         } else if (direction == DismissDirection.startToEnd) {
           updateTodo(todo.id, todo.copyWith(completed: true));
         }

@@ -63,6 +63,7 @@ class _TasksViewState extends State<TasksView>
   @override
   Widget build(BuildContext context) {
     return Container(
+
       padding: const EdgeInsets.only(
         top: 18.0,
       ),
@@ -93,13 +94,14 @@ class _MyTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBar(
-      indicator: UnderlineTabIndicator(
-        borderSide: const BorderSide(
-          width: 5.0,
-          color: const Color.fromRGBO(86, 83, 195, 1.0),
-        ),
-        insets: const EdgeInsets.only(right: 100.0),
-      ),
+      // indicator: UnderlineTabIndicator(
+      //   borderSide: const BorderSide(
+      //     width: 3.0,
+      //     color: const Color.fromRGBO(86, 83, 195, 1.0),
+      //   ),
+      //   insets: const EdgeInsets.only(right: 100.0),
+      // ),
+      
       controller: _tabController,
       tabs: _tabs.toList(),
       labelColor: Colors.black,
